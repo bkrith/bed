@@ -177,7 +177,7 @@ export class Type {
 			if (!field.optional) {
 				code = name + ': ' + readCode;
 			} else {
-				code = name + ': this.Types.boolean.read(state) ? ' + readCode + ' : undefined';
+				code = name + ': Types.boolean.read(state) ? ' + readCode + ' : undefined';
 			}
 			return code;
 		}).join(',') + '}';
