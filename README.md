@@ -2,7 +2,7 @@
 Encode/decode to a custom binary format, much more compact and faster than JSON/BSON. It's Typescript ported of [JS Binary](https://github.com/sitegui/js-binary) module with BigInts as extra.
 
 ## Install
-`npm install js-binary`
+`npm install @bkrith/bed`
 
 ## Goal
 This module is analogous to `JSON.stringify` and `JSON.parse`, but instead of a JSON string, the data is encoded to a custom binary format (using a Buffer instance to store the data).
@@ -25,7 +25,7 @@ var user = {
 	achievements: [3, 14, 15, 92, 65, 35]
 }
 
-var Type = require('js-binary').Type
+var Type = require('@bkrith/bed')
 var schema = new Type({
 	name: {
 		first: 'string',
@@ -47,7 +47,7 @@ var decoded = schema.decode(encoded)
 A quick example:
 ```json
 {
-	"name": "js-binary",
+	"name": "bed",
 	"published": "2014-12-21T23:42:46.558Z",
 	"downloads": 1717
 }
@@ -104,12 +104,12 @@ Examples:
 * Object array: `[{v: 'int', f: 'string'}]`
 
 ### JSON type
-As stated before, the js-binary requires the data to have a rather strict schema. But sometimes, part of the data may not fit this reality. In this case, you can fallback to JSON :)
+As stated before, the bed requires the data to have a rather strict schema. But sometimes, part of the data may not fit this reality. In this case, you can fallback to JSON :)
 
 Of course, a JSON field will miss the point about space efficiency and data validation, but will gain in flexibility.
 
 ### ObjectId type
-js-binary gives first-class support for mongodb ObjectId. But since js-binary doesn't (and shouldn't) depend on any peculiar mongodb driver, the rules for this type are:
+bed gives first-class support for mongodb ObjectId. But since bed doesn't (and shouldn't) depend on any peculiar mongodb driver, the rules for this type are:
 
 * Encoding: any object `o` is accepted, as long `new Buffer(String(o), 'hex')` yields a 12-byte Buffer
 * Decoding: returns a 24-char hex-encoded string
