@@ -161,7 +161,7 @@ export class Type {
 		// As an example, compiling code to new Type({a:'int', 'b?':['string']}) will result in:
 		// return {
 		//     a: this.fields[0].type.read(state),
-		//     b: this.types.boolean.read(state) ? this._readArray(state, this.fields[1].type) : undefined
+		//     b: this.Types.boolean.read(state) ? this._readArray(state, this.fields[1].type) : undefined
 		// }
 		const code = 'return {' + this.fields.map((field, i) => {
 			const name = JSON.stringify(field.name),
@@ -177,7 +177,7 @@ export class Type {
 			if (!field.optional) {
 				code = name + ': ' + readCode;
 			} else {
-				code = name + ': this.types.boolean.read(state) ? ' + readCode + ' : undefined';
+				code = name + ': this.Types.boolean.read(state) ? ' + readCode + ' : undefined';
 			}
 			return code;
 		}).join(',') + '}';
