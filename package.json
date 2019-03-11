@@ -1,6 +1,6 @@
 {
   "name": "@bkrith/bed",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "author": "Vassilis",
   "description": "BED(Binary Encoder/Decoder) implementation of JS-Binary module",
   "main": "index.js",
