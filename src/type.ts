@@ -177,13 +177,18 @@ export class Type {
 			if (!field.optional) {
 				code = name + ': ' + readCode;
 			} else {
-				code = name + ': Types.boolean.read(state) ? ' + readCode + ' : undefined';
+				code = name + ': this.Types().boolean.read(state) ? ' + readCode + ' : undefined';
 			}
 			return code;
 		}).join(',') + '}';
 
 		// tslint:disable-next-line:function-constructor
 		return new Function('state', code);
+	}
+
+	// Hack for Eval in js compilation
+	private Types(): any {
+		return Types;
 	}
 
 	private readArray(type: Type, state: ReadState): any[] {

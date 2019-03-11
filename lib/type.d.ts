@@ -15,5 +15,6 @@ export declare class Type {
     getHash(): Buffer;
     private hashType;
     private compileRead;
+    private Types;
     private readArray;
 }
