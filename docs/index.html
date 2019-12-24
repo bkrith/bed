@@ -64,16 +64,24 @@
 	<div class="row">
 		<div class="col-8 col-content">
 			<div class="tsd-panel tsd-typography">
-				<h1 id="bed-binary-encoder-decoder-">BED (Binary Encoder/Decoder)</h1>
+				<a href="#bed-binary-encoderdecoder" id="bed-binary-encoderdecoder" style="color: inherit; text-decoration: none;">
+					<h1>BED (Binary Encoder/Decoder)</h1>
+				</a>
 				<p>Encode/decode to a custom binary format, much more compact and faster than JSON/BSON. It&#39;s Typescript ported of <a href="https://github.com/sitegui/js-binary">JS Binary</a> module with BigInts as extra.</p>
-				<h2 id="install">Install</h2>
+				<a href="#install" id="install" style="color: inherit; text-decoration: none;">
+					<h2>Install</h2>
+				</a>
 				<p><code>npm install @bkrith/bed</code></p>
-				<h2 id="goal">Goal</h2>
+				<a href="#goal" id="goal" style="color: inherit; text-decoration: none;">
+					<h2>Goal</h2>
+				</a>
 				<p>This module is analogous to <code>JSON.stringify</code> and <code>JSON.parse</code>, but instead of a JSON string, the data is encoded to a custom binary format (using a Buffer instance to store the data).
 				This format was designed to be very <em>compact</em> and give support for <em>more types</em> (like Date and Buffer).</p>
 				<p>To reduce overhead in the format, it carries no information about types. This implies that you must define the data schema to encode/decode properly. Huge plus: this automatically validates the data against the given schema (<em>input sanitization for free!</em>). This binary format is well suited for very regular data, like API input/output.</p>
 				<p>Note that, since it&#39;s a binary format, it was not meant to be easily viewed/edited by hand.</p>
-				<h2 id="usage">Usage</h2>
+				<a href="#usage" id="usage" style="color: inherit; text-decoration: none;">
+					<h2>Usage</h2>
+				</a>
 				<pre><code class="language-js"><span class="hljs-keyword">var</span> user = {
     <span class="hljs-attr">name</span>: {
         <span class="hljs-attr">first</span>: <span class="hljs-string">'Guilherme'</span>,
@@ -101,7 +109,9 @@
 <span class="hljs-keyword">var</span> encoded = schema.encode(user)
 
 <span class="hljs-keyword">var</span> decoded = schema.decode(encoded)</code></pre>
-				<h2 id="benchmark">Benchmark</h2>
+				<a href="#benchmark" id="benchmark" style="color: inherit; text-decoration: none;">
+					<h2>Benchmark</h2>
+				</a>
 				<p>A quick example:</p>
 				<pre><code class="language-json">{
     <span class="hljs-attr">"name"</span>: <span class="hljs-string">"bed"</span>,
@@ -111,19 +121,24 @@
 				<p>(76 bytes, without formatting) versus <code>096a732d62696e617279e000014a6f3b531e86b5</code> (20 bytes)</p>
 				<p>On average, a 2x to 3x space reduction can be observed.</p>
 				<p>In the <code>benchmark</code> you can find another test with more data. In my machine with node 8.9.0, this is the result:</p>
-				<pre><code>Encode
-        JSON
-                Time: <span class="hljs-number">2.47</span>ms
-                Size: <span class="hljs-number">190</span>KiB
-        js-binary
-                Time: <span class="hljs-number">1.453</span>ms (<span class="hljs-number">-41</span>%)
-                Size: <span class="hljs-number">51</span>KiB (<span class="hljs-number">3.7</span>x less)
-Decode
-        JSON
-                Time: <span class="hljs-number">2.791</span>ms
-        js-binary
-                Time: <span class="hljs-number">0.497</span>ms (<span class="hljs-number">-82</span>%)</code></pre><h2 id="available-types">Available types</h2>
-				<h3 id="basic-types">Basic types</h3>
+				<pre><code><span class="hljs-string">Encode</span>
+        <span class="hljs-string">JSON</span>
+                <span class="hljs-attr">Time:</span> <span class="hljs-number">2.</span><span class="hljs-string">47ms</span>
+                <span class="hljs-attr">Size:</span> <span class="hljs-string">190KiB</span>
+        <span class="hljs-string">js-binary</span>
+                <span class="hljs-attr">Time:</span> <span class="hljs-number">1.</span><span class="hljs-string">453ms</span> <span class="hljs-string">(-41%)</span>
+                <span class="hljs-attr">Size:</span> <span class="hljs-string">51KiB</span> <span class="hljs-string">(3.7x</span> <span class="hljs-string">less)</span>
+<span class="hljs-string">Decode</span>
+        <span class="hljs-string">JSON</span>
+                <span class="hljs-attr">Time:</span> <span class="hljs-number">2.</span><span class="hljs-string">791ms</span>
+        <span class="hljs-string">js-binary</span>
+                <span class="hljs-attr">Time:</span> <span class="hljs-number">0.</span><span class="hljs-string">497ms</span> <span class="hljs-string">(-82%)</span></code></pre>
+				<a href="#available-types" id="available-types" style="color: inherit; text-decoration: none;">
+					<h2>Available types</h2>
+				</a>
+				<a href="#basic-types" id="basic-types" style="color: inherit; text-decoration: none;">
+					<h3>Basic types</h3>
+				</a>
 				<ul>
 					<li>&#39;uint&#39;: unsigned integer (between 0 and 2^53)</li>
 					<li>&#39;int&#39;: signed integer (between -2^53 and 2^53)</li>
@@ -136,7 +151,9 @@ Decode
 					<li>&#39;json&#39;: any data supported by <a href="http://json.org/">JSON format</a>. Read bellow for more</li>
 					<li>&#39;oid&#39;: mongodb ObjectId (see bellow)</li>
 				</ul>
-				<h3 id="compound-types">Compound types</h3>
+				<a href="#compound-types" id="compound-types" style="color: inherit; text-decoration: none;">
+					<h3>Compound types</h3>
+				</a>
 				<p>A compound type is an object with (optional) fields. Those fields may be arrays, but with the restriction that every element has the same data schema.</p>
 				<p>Examples:</p>
 				<ul>
@@ -145,24 +162,32 @@ Decode
 					<li>Array fields: <code>{a: [&#39;int&#39;]}</code></li>
 					<li>All together now: <code>{&#39;a?&#39;: [{&#39;b?&#39;: &#39;int&#39;}]}</code></li>
 				</ul>
-				<h3 id="array-type">Array type</h3>
+				<a href="#array-type" id="array-type" style="color: inherit; text-decoration: none;">
+					<h3>Array type</h3>
+				</a>
 				<p>An array type in which every element has the same data schema.</p>
 				<p>Examples:</p>
 				<ul>
 					<li>Int array: <code>[&#39;int&#39;]</code></li>
 					<li>Object array: <code>[{v: &#39;int&#39;, f: &#39;string&#39;}]</code></li>
 				</ul>
-				<h3 id="json-type">JSON type</h3>
+				<a href="#json-type" id="json-type" style="color: inherit; text-decoration: none;">
+					<h3>JSON type</h3>
+				</a>
 				<p>As stated before, the bed requires the data to have a rather strict schema. But sometimes, part of the data may not fit this reality. In this case, you can fallback to JSON :)</p>
 				<p>Of course, a JSON field will miss the point about space efficiency and data validation, but will gain in flexibility.</p>
-				<h3 id="objectid-type">ObjectId type</h3>
+				<a href="#objectid-type" id="objectid-type" style="color: inherit; text-decoration: none;">
+					<h3>ObjectId type</h3>
+				</a>
 				<p>bed gives first-class support for mongodb ObjectId. But since bed doesn&#39;t (and shouldn&#39;t) depend on any peculiar mongodb driver, the rules for this type are:</p>
 				<ul>
 					<li>Encoding: any object <code>o</code> is accepted, as long <code>new Buffer(String(o), &#39;hex&#39;)</code> yields a 12-byte Buffer</li>
 					<li>Decoding: returns a 24-char hex-encoded string</li>
 				</ul>
 				<p>This should be compatible with most ObjectId implementations on the wild</p>
-				<h2 id="spec">Spec</h2>
+				<a href="#spec" id="spec" style="color: inherit; text-decoration: none;">
+					<h2>Spec</h2>
+				</a>
 				<p>The binary format spec is documented in the format.md file</p>
 			</div>
 		</div>
@@ -173,19 +198,19 @@ Decode
 						<a href="globals.html"><em>Globals</em></a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="modules/_data_.html">"data"</a>
+						<a href="modules/_data_.html">&quot;data&quot;</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="modules/_field_.html">"field"</a>
+						<a href="modules/_field_.html">&quot;field&quot;</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="modules/_readstate_.html">"read<wbr>State"</a>
+						<a href="modules/_readstate_.html">&quot;read<wbr>State&quot;</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="modules/_type_.html">"type"</a>
+						<a href="modules/_type_.html">&quot;type&quot;</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="modules/_types_.html">"types"</a>
+						<a href="modules/_types_.html">&quot;types&quot;</a>
 					</li>
 				</ul>
 			</nav>
@@ -208,6 +233,7 @@ Decode
 				<li class="tsd-kind-function tsd-has-type-parameter"><span class="tsd-kind-icon">Function with type parameter</span></li>
 				<li class="tsd-kind-index-signature"><span class="tsd-kind-icon">Index signature</span></li>
 				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
+				<li class="tsd-kind-type-alias tsd-has-type-parameter"><span class="tsd-kind-icon">Type alias with type parameter</span></li>
 			</ul>
 			<ul class="tsd-legend">
 				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
@@ -256,7 +282,7 @@ Decode
 	</div>
 </footer>
 <div class="container tsd-generator">
-	<p>Generated using <a href="http://typedoc.org/" target="_blank">TypeDoc</a></p>
+	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
 </div>
 <div class="overlay"></div>
 <script src="assets/js/main.js"></script>

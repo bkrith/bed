@@ -153,7 +153,11 @@ export const types: any = {
             if (typeof (BN) !== 'bigint') {
                 throw new TypeError('Expected a BigInt at ' + path + ', got ' + BN);
             }
-            types.Buffer.write(Buffer.from(BN.toString(16), 'hex'), data, path);
+            let bnHex = BN.toString(16);
+
+            if ((bnHex.length % 2) !== 0) bnHex = '0' + bnHex;
+
+            types.Buffer.write(Buffer.from(bnHex, 'hex'), data, path);
         },
         read: (state: ReadState) => {
             return BigInt('0x' + types.Buffer.read(state).toString('hex'));
