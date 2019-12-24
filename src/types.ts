@@ -160,7 +160,7 @@ export const types: any = {
             types.Buffer.write(Buffer.from(bnHex, 'hex'), data, path);
         },
         read: (state: ReadState) => {
-            return BigInt('0x' + types.Buffer.read(state).toString('hex'));
+            return BigInt('0x' + (types.Buffer.read(state).toString('hex') || '00'));
         }
     },
 
